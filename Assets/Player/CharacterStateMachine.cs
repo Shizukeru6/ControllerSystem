@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Player State Machine", menuName = "StateMachines/Player")]
-public class PlayerStateMachine : ScriptableObject
+[CreateAssetMenu(fileName = "Character State Machine", menuName = "StateMachines/Character")]
+public class CharacterStateMachine : ScriptableObject
 {
     public PlayerState CurrentPlayerState { get; private set; }
     public GameEventSO IdleEvent { get; private set; }
