@@ -31,9 +31,9 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector3 MovementVector = MovementInputX.FloatVariable * Vector3.right + MovementInputY.FloatVariable * Vector3.forward;
+        /*Vector3 MovementVector = MovementInputX.FloatVariable * Vector3.right + MovementInputY.FloatVariable * Vector3.forward;
         MovementVector.Normalize();
 
-        Character.transform.Translate(MovementVector * MovementSpeed * Time.deltaTime, Space.World);
+        Character.transform.Translate(MovementVector * MovementSpeed * Time.deltaTime, Space.World);*/
     }
 }

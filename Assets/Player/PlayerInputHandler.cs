@@ -17,13 +17,17 @@ public class PlayerInputHandler : MonoBehaviour
         Debug.Log(MovementInput);
         MovementInputX.FloatVariable = MovementInput.x;
         MovementInputY.FloatVariable = MovementInput.y;
-        WalkRunIdle();
+        //WalkRunIdle();
+        if(context.performed) characterStateMachine.ChangeState(CharacterState.Walk);
+        if(context.canceled) characterStateMachine.ChangeState(CharacterState.Idle);
     }
 
     public void OnRunInput(InputAction.CallbackContext context)
     {
-        IsSlowRun = context.performed || context.started;
-        WalkRunIdle();
+        //IsSlowRun = context.performed || context.started;
+        if (context.performed) characterStateMachine.ChangeState(CharacterState.RunSlow);
+        if (context.canceled) characterStateMachine.ChangeState(CharacterState.Walk);
+        //WalkRunIdle();
     }
 
     public void OnAttackInput(InputAction.CallbackContext context)
