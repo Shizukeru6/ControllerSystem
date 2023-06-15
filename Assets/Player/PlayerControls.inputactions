@@ -49,7 +49,7 @@
                     "name": "WASD",
                     "id": "7a929c65-7c7a-4ea5-9fc7-b7e5658a1922",
                     "path": "2DVector",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Movement",
@@ -57,7 +57,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "Up",
                     "id": "48e2e1cb-0105-4705-9df8-0ea0eef18d40",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -68,7 +68,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
+                    "name": "Down",
                     "id": "6c12e814-12f3-498b-a806-0aab867e40da",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -79,8 +79,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "f2e31b1d-80d8-451a-aba5-9e72e7fb4222",
+                    "name": "Left",
+                    "id": "1b04d3fc-3883-4398-a301-c8e779e98171",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -90,8 +90,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "fa4db9a7-0438-4200-ab59-268b567951d0",
+                    "name": "Right",
+                    "id": "732bd4df-c08e-41b2-870d-2c91c87f1712",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -112,37 +112,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "One Modifier",
-                    "id": "2eb2a37d-307a-43c4-a7f3-58513d5f25db",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Run",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "1df33a89-0b72-44d8-9268-6c538a95ba92",
+                    "name": "",
+                    "id": "f1538d6d-bd88-4073-add9-5b4b79435361",
                     "path": "<Keyboard>/leftShift",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Run",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "c78783af-1545-400d-9827-a919b3fd0054",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -151,12 +129,29 @@
         {
             "name": "Gamepad",
             "bindingGroup": "Gamepad",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         },
         {
             "name": "Keyboard",
             "bindingGroup": "Keyboard",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }
