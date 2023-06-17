@@ -6,28 +6,22 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     [field:SerializeField] public CharacterStateMachine characterStateMachine { get; private set; }
+    [field:SerializeField] public GameActionToggleAnimation ToggleRunSlow { get; private set; }
     public bool IsSlowRun { get; private set; } = false;
     public Vector2 MovementInput { get; private set; } = Vector2.zero;
-    [field: SerializeField] public FloatSO MovementInputX { get; private set; }
-    [field: SerializeField] public FloatSO MovementInputY { get; private set; }
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         MovementInput = context.ReadValue<Vector2>();
-        Debug.Log(MovementInput);
-        MovementInputX.FloatVariable = MovementInput.x;
-        MovementInputY.FloatVariable = MovementInput.y;
-        //WalkRunIdle();
+        /*if (MovementInput == Vector2.zero) characterStateMachine.ChangeState(CharacterState.Idle);
+        WalkRunIdle();*/
         if(context.performed) characterStateMachine.ChangeState(CharacterState.Walk);
         if(context.canceled) characterStateMachine.ChangeState(CharacterState.Idle);
     }
 
     public void OnRunInput(InputAction.CallbackContext context)
     {
-        //IsSlowRun = context.performed || context.started;
-        if (context.performed) characterStateMachine.ChangeState(CharacterState.RunSlow);
-        if (context.canceled) characterStateMachine.ChangeState(CharacterState.Walk);
-        //WalkRunIdle();
+        if(context.performed || context.canceled) ToggleRunSlow.InvokeAction(context.performed);
     }
 
     public void OnAttackInput(InputAction.CallbackContext context)
@@ -37,7 +31,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void WalkRunIdle()
     {
-        if (MovementInput == Vector2.zero) characterStateMachine.ChangeState(CharacterState.Idle);
         if (!IsSlowRun && MovementInput != Vector2.zero) characterStateMachine.ChangeState(CharacterState.Walk);
         if (IsSlowRun && MovementInput != Vector2.zero) characterStateMachine.ChangeState(CharacterState.RunSlow);
     }

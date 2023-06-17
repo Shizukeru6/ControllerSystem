@@ -6,10 +6,23 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [field:SerializeField] public Animator CharacterAnimator { get; private set; }
+    [field: SerializeField] public GameActionToggleAnimation ToggleRunSlow { get; private set; }
     [field:SerializeField] public float MovementSpeed { get; private set; }
-    [field: SerializeField] public FloatSO MovementInputX { get; private set; }
-    [field: SerializeField] public FloatSO MovementInputY { get; private set; }
-    [field: SerializeField] public GameObject Character { get; private set; }
+
+    private void OnEnable()
+    {
+        ToggleRunSlow.SetAnimationBool += ToggleRunSlow_SetAnimationBool;
+    }
+
+    private void OnDisable()
+    {
+        ToggleRunSlow.SetAnimationBool -= ToggleRunSlow_SetAnimationBool;
+    }
+
+    private void ToggleRunSlow_SetAnimationBool(bool obj)
+    {
+        CharacterAnimator.SetBool("RunSlow", obj);
+    }
 
     public void Idle()
     {
@@ -27,13 +40,11 @@ public class CharacterMovement : MonoBehaviour
     {
         MovementSpeed = 20;
         CharacterAnimator.SetTrigger("RunSlow");
+        CharacterAnimator.SetLayerWeight(CharacterAnimator.GetLayerIndex("Run"), 1);
     }
 
-    private void Update()
+    public void SwitchLayer()
     {
-        /*Vector3 MovementVector = MovementInputX.FloatVariable * Vector3.right + MovementInputY.FloatVariable * Vector3.forward;
-        MovementVector.Normalize();
 
-        Character.transform.Translate(MovementVector * MovementSpeed * Time.deltaTime, Space.World);*/
     }
 }
