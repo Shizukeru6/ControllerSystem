@@ -7,7 +7,6 @@ public class CharacterMovement : MonoBehaviour
 {
     [field:SerializeField] public Animator CharacterAnimator { get; private set; }
     [field: SerializeField] public GameActionToggleAnimation ToggleRunSlow { get; private set; }
-    [field:SerializeField] public float MovementSpeed { get; private set; }
 
     private void OnEnable()
     {
@@ -26,19 +25,16 @@ public class CharacterMovement : MonoBehaviour
 
     public void Idle()
     {
-        MovementSpeed = 0;
         CharacterAnimator.SetTrigger("Idle");
     }
 
     public void Walk()
     {
-        MovementSpeed = 10;
         CharacterAnimator.SetTrigger("Walk");
     }
 
     public void RunSlow()
     {
-        MovementSpeed = 20;
         CharacterAnimator.SetTrigger("RunSlow");
         CharacterAnimator.SetLayerWeight(CharacterAnimator.GetLayerIndex("Run"), 1);
     }

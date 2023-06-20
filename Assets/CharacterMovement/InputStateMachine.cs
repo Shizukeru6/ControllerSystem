@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Character State Machine", menuName = "StateMachines/Character")]
-public class CharacterStateMachine : ScriptableObject
+public class InputStateMachine : ScriptableObject
 {
-    public CharacterState CurrentPlayerState { get; private set; }
+    public InputState CurrentPlayerState { get; private set; }
     [field: SerializeField] public GameEventSO IdleEvent { get; private set; }
-    [field: SerializeField] public GameEventSO WalkEvent { get; private set; }
+    [field: SerializeField] public GameEventSO MoveEvent { get; private set; }
     [field: SerializeField] public GameEventSO RunSlowEvent { get; private set; }
     [field: SerializeField] public GameEventSO RunEvent { get; private set; }
     [field: SerializeField] public GameEventSO AttackEvent { get; private set; }
 
-    public void ChangeState(CharacterState NewPlayerState)
+    public void ChangeState(InputState NewPlayerState)
     {
         switch (NewPlayerState)
         {
-            case CharacterState.Idle:
+            case InputState.Idle:
                 IdleEvent.Raise();
                 break;
-            case CharacterState.Walk:
-                WalkEvent.Raise();
+            case InputState.Walk:
+                MoveEvent.Raise();
                 break;
-            case CharacterState.RunSlow:
+            case InputState.RunSlow:
                 RunSlowEvent.Raise();
                 break;
-            case CharacterState.Run:
+            case InputState.Run:
                 RunEvent.Raise();
                 break;
-            case CharacterState.Attack:
+            case InputState.Attack:
                 AttackEvent.Raise();
                 break;
         }
@@ -36,7 +36,7 @@ public class CharacterStateMachine : ScriptableObject
     }
 }
 
-public enum CharacterState
+public enum InputState
 {
     Idle,
     Walk,
