@@ -7,6 +7,13 @@ public class CharacterMovement : MonoBehaviour
 {
     [field:SerializeField] public Animator CharacterAnimator { get; private set; }
     [field: SerializeField] public GameActionToggleAnimation ToggleRunSlow { get; private set; }
+    public GameActionSetLayer gameActionSetLayer;
+
+    private void Start()
+    {
+        gameActionSetLayer = new GameActionSetLayer(gameActionSetLayer);
+        gameActionSetLayer.Invoke("asdas", 5);
+    }
 
     private void OnEnable()
     {
