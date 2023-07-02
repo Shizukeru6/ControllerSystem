@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Character State Machine
   m_EditorClassIdentifier: 
   <IdleEvent>k__BackingField: {fileID: 11400000, guid: bad4e668e16e5bc4db02b37cccbf0d5f, type: 2}
-  <WalkEvent>k__BackingField: {fileID: 11400000, guid: f9540e7753685fd40a898dc59f14efe1, type: 2}
-  <RunSlowEvent>k__BackingField: {fileID: 11400000, guid: 0134db5062a29f843a9eb50b7cfd040e, type: 2}
-  <RunEvent>k__BackingField: {fileID: 0}
+  <MoveEvent>k__BackingField: {fileID: 11400000, guid: f9540e7753685fd40a898dc59f14efe1, type: 2}
   <AttackEvent>k__BackingField: {fileID: 0}
